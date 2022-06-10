@@ -1,5 +1,6 @@
 # Dependencies
-server/venv
+venv
+node_modules
 
 # Cache
 .pytest_cache
