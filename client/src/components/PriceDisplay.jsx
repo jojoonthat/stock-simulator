@@ -10,7 +10,7 @@ function PriceDisplay() {
       while (true) {
         const { curr_price } = await (await fetch("http://localhost:5000/next-tick")).json()
         setCurrPrice(curr_price);
-        await sleep(1000)
+        await sleep(500);
       }
     }
 
