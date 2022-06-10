@@ -1,6 +1,6 @@
 function PriceDisplay({ price }) {
   return (
-    <p className="price-display">${price}</p>
+    <p className="price-display">${price.toFixed(5)}</p>
   )
 }
 
