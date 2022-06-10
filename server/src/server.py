@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+from flask_cors import CORS
 import logging
 from Simulation.Simulation import Simulation
 
@@ -8,6 +9,7 @@ log.disabled = True
 
 # Init flask app + simulation instances
 app = Flask(__name__)
+CORS(app)
 simulation = Simulation()
 
 # Return price at simulation's next tick on GET /next-tick
