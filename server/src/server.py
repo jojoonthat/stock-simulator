@@ -18,6 +18,7 @@ def next_tick():
     simulation.next_tick()
     return jsonify(curr_price=simulation.orderbook.curr_price)
 
+# Set new sentiment in simulation on POST /set-sentiment
 @app.route("/set-sentiment", methods=["POST"])
 def set_sentiment():
     req_body = request.get_json()
