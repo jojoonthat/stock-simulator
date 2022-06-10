@@ -6,3 +6,59 @@
     align-items: center;
     justify-content: center;
 }
+
+.slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+}
+
+.slider-container p {
+    font-size: 3rem;
+}
+
+.slider {
+    width: 40rem;
+    position: relative;
+}
+
+.slider p {
+    font-size: 2rem;
+    color: #ccc;
+    position: absolute;
+    top: 4rem;
+    left: 50%;
+    transform: translateX(-50%)
+}
+
+.slider input {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 2rem;
+    background: #eee;
+    border-radius: 1rem;
+    opacity: 0.5;
+    transition: opacity .2s;
+}
+
+.slider input:hover {
+    opacity: 1;
+}
+
+.slider input::-webkit-slider-thumb {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
+    background: #5d39df;
+    cursor: pointer;
+    -webkit-appearance: none;
+}
+
+.slider input::-moz-range-thumb {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
+    background: #5d39df;
+    cursor: pointer;
+}
