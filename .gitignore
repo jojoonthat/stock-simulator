@@ -1,6 +1,12 @@
+# Build
+build
+
 # Dependencies
 venv
 node_modules
 
 # Cache
 .pytest_cache
+
+# Misc.
+.DS_Store
