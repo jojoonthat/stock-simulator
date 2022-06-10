@@ -1,0 +1,5 @@
+# Dependencies
+server/venv
+
+# Cache
+server/.pytest_cache
