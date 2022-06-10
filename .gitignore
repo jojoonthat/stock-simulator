@@ -2,4 +2,4 @@
 server/venv
 
 # Cache
-server/.pytest_cache
+.pytest_cache

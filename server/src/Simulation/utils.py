@@ -3,7 +3,7 @@ import bisect
 
 
 # Enum for order types
-class OrderType(Enum):
+class OrderTypes(Enum):
     LIMIT = "LIMIT"
     MARKET = "MARKET"
 

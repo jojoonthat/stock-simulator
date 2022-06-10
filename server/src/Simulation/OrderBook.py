@@ -1,5 +1,5 @@
 from collections import defaultdict
-from utils import OrderType, OrderSides, SortedSet
+from Simulation.utils import OrderTypes, OrderSides, SortedSet
 
 
 """
@@ -18,7 +18,7 @@ class Order:
         self.orig_quantity = quantity
         self.quantity = quantity
 
-        if order_type == OrderType.LIMIT:
+        if order_type == OrderTypes.LIMIT:
             self.price = price
         else:
             # +inf / -inf if market order is buy / sell
@@ -64,7 +64,7 @@ class OrderBook:
         self.live_order_ids[order.id] = [order.price, order.side]
 
         # Limit order
-        if order.type == OrderType.LIMIT:
+        if order.type == OrderTypes.LIMIT:
             if order.side == OrderSides.BUY:
                 # Only initiate matching when there is a equal or lower sell order
                 if order.price >= self.best_sell:
@@ -87,7 +87,7 @@ class OrderBook:
             return
 
         # Market Order
-        if order.type == OrderType.MARKET:
+        if order.type == OrderTypes.MARKET:
             # Match right away
             self.execute_match(order)
             if order.quantity > 0:
@@ -166,7 +166,9 @@ class OrderBook:
                     orders[price].pop(resting_order_id)
                 
                 # If we didn't just match two market orders, update current price
-                if not(order.type == OrderType.MARKET and resting_order.type == OrderType.MARKET):
+                market_market = order.type == OrderTypes.MARKET and resting_order.type == OrderTypes.MARKET
+                inf_price = price == float("inf") or price == float("-inf")
+                if not market_market and not inf_price:
                     self.curr_price = price
             
             # Remove price key if there are no more orders at that price
