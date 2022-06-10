@@ -10,12 +10,11 @@ Accepts number of traders and their trade frequency.
 Simulates a real world situation taken into account a companies sentiment and a trader's character.
 """
 class Simulation():
-    def __init__(self, stock_name="SIMPLE", ipo_price=100, num_traders=1000, freq=1):
+    def __init__(self, stock_name="SIMPLE", ipo_price=100, num_traders=1000):
         # Create an orderbook
         self.orderbook = OrderBook(stock_name, ipo_price)
         # Generate a random number of random traders
         self.traders = [self.get_random_trader() for _ in range(num_traders)]
-        self.freq = freq
         self.sentiment = 0.5
     
     # Generate a trader with random market sensitivity
@@ -70,7 +69,7 @@ class Simulation():
         # Also want to avoid market orders clogging up
         if random.random() > 0.1:
             curr_price = self.orderbook.curr_price
-            # Dela value to allow buy/selll prices to vary within reason
+            # Delta value to allow buy/selll prices to vary within reason
             delta = curr_price * volatility * 0.01
             # Multiplier that will be applied later on if the trader makes a bad decision
             delta_multiplier = 1 if buy else -1
